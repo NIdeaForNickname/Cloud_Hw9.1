@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebApplication15.Models.UserViewModel>
+
+@{
+    ViewData["Title"] = "Главная страница";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4">Сообщество пользователей</h1>
+    <p class="lead text-muted">Список активных участников нашей системы, загруженный из базы данных.</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var user in Model)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="text-center pt-4">
+                    <img src="@user.AvatarUrl" class="rounded-circle shadow" width="100" height="100" style="object-fit: cover;" alt="Avatar" />
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">@user.Nickname</h5>
+                    <p class="text-muted fst-italic">"@user.Status"</p>
+                    <hr />
+                    <ul class="list-unstyled text-start small ps-3">
+                        <li><strong>🎂 Дата рождения:</strong> @user.BirthDate.ToString("dd.MM.yyyy")</li>
+                        <li><strong>📅 Регистрация:</strong> @user.RegistrationDate.ToString("dd.MM.yyyy")</li>
+                        <li><strong>🟢 Последний вход:</strong> @user.LastLoginDate.ToString("dd.MM.yyyy HH:mm")</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-transparent border-0 text-center pb-3">
+                    <button class="btn btn-outline-primary btn-sm">Профиль</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
