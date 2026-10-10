@@ -8,7 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,9 +23,14 @@ jobs:
           dotnet build --configuration Release --no-restore
           dotnet publish --configuration Release --output ./publish-folder
       
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }} 
+      
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'myapp12341321-evdwaqetaqb9hydx' 
+          app-name: 'myapp12341321-evdwaqetaqb9hydx'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./publish-folder
