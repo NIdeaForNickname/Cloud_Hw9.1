@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<WebApplication15.Models.UserViewModel>
 
 @{
-    ViewData["Title"] = "Главная страница";
+    ViewData["Title"] = "Main";
 }
 
 <div class="text-center mb-5">
-    <h1 class="display-4">Сообщество пользователей</h1>
-    <p class="lead text-muted">Список активных участников нашей системы, загруженный из базы данных.</p>
+    <h1 class="display-4">People list</h1>
 </div>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -22,13 +21,10 @@
                     <p class="text-muted fst-italic">"@user.Status"</p>
                     <hr />
                     <ul class="list-unstyled text-start small ps-3">
-                        <li><strong>🎂 Дата рождения:</strong> @user.BirthDate.ToString("dd.MM.yyyy")</li>
-                        <li><strong>📅 Регистрация:</strong> @user.RegistrationDate.ToString("dd.MM.yyyy")</li>
-                        <li><strong>🟢 Последний вход:</strong> @user.LastLoginDate.ToString("dd.MM.yyyy HH:mm")</li>
+                        <li><strong>Birth date:</strong> @user.BirthDate.ToString("dd.MM.yyyy")</li>
+                        <li><strong>Registration:</strong> @user.RegistrationDate.ToString("dd.MM.yyyy")</li>
+                        <li><strong>Last seen:</strong> @user.LastLoginDate.ToString("dd.MM.yyyy HH:mm")</li>
                     </ul>
-                </div>
-                <div class="card-footer bg-transparent border-0 text-center pb-3">
-                    <button class="btn btn-outline-primary btn-sm">Профиль</button>
                 </div>
             </div>
         </div>
